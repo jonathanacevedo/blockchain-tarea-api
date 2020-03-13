@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Usuario {
     private String nombre;
-    private Long clave;
+    private String clave;
 }

@@ -12,6 +12,8 @@ public class RepositorioUsuarioMySql implements RepositorioUsuario {
 
     private final JdbcTemplate jdbcTemplate;
 
+    String sqlListar = "SELECT * FROM usuario WHERE nombre = 'Jonathan';";
+
     public RepositorioUsuarioMySql(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -23,8 +25,8 @@ public class RepositorioUsuarioMySql implements RepositorioUsuario {
         MapSqlParameterSource parameterSource = new MapSqlParameterSource();
         parameterSource.addValue("nombre", nombreUsuario);
 
-        List<Usuario> usuario = jdbcTemplate.query("SELECT * FROM usuario WHERE usuario_nombre = 'Jonathan'", new MapeoUsuario());
+        List<Usuario> usuario = jdbcTemplate.query(sqlListar, new MapeoUsuario());
 
-        return usuario.get(0).getNombre();
+        return usuario.get(0).getClave();
     }
 }

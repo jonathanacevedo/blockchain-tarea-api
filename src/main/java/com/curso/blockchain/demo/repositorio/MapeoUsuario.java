@@ -12,8 +12,8 @@ public class MapeoUsuario implements RowMapper<Usuario> {
     @Override
     public Usuario mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        String nombre = rs.getString("usuario_nombre");
-        Long clave = rs.getLong("usuario_clave");
+        String nombre = rs.getString("nombre");
+        String clave = rs.getString("password");
 
         return new Usuario(nombre, clave);
     }
