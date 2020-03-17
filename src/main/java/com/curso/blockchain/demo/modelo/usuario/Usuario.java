@@ -1,4 +1,4 @@
-package com.curso.blockchain.demo.modelo;
+package com.curso.blockchain.demo.modelo.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
