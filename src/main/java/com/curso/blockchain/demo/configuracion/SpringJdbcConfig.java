@@ -28,7 +28,6 @@ public class SpringJdbcConfig {
         dataSource.setUrl("jdbc:mysql://localhost:3306/init");
         dataSource.setUsername("jonathan");
         dataSource.setPassword("jonathan");
-
         return dataSource;
     }
 }

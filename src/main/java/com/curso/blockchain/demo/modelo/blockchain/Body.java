@@ -1,0 +1,14 @@
+package com.curso.blockchain.demo.modelo.blockchain;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+public class Body {
+    private List<Transaccion> transacciones;
+}

@@ -1,6 +1,7 @@
-package com.curso.blockchain.demo.controlador;
+package com.curso.blockchain.demo.controlador.usuario;
 
 import com.curso.blockchain.demo.modelo.usuario.Usuario;
+import com.curso.blockchain.demo.modelo.usuario.dto.DtoUsuario;
 import com.curso.blockchain.demo.servicio.usuario.ServicioCrearUsuario;
 import com.curso.blockchain.demo.servicio.usuario.ServicioListarUsuario;
 import io.swagger.annotations.Api;
@@ -23,13 +24,13 @@ public class ControladorUsuario {
 
     @PostMapping
     @ApiOperation("Creación de Usuarios")
-    public String obtenerUsuarios(@RequestParam("nombre") String nombre, @RequestParam("clave") String clave) {
-        return servicioCrearUsuario.ejecutar(nombre, clave);
+    public String obtenerUsuarios(@RequestBody Usuario usuario) {
+        return servicioCrearUsuario.ejecutar(usuario);
     }
 
-    @GetMapping("/listar")
+    @GetMapping
     @ApiOperation("Listado de Usuarios Registrados")
-    public List<Usuario> listarUsuarios() {
+    public List<DtoUsuario> listarUsuarios() {
         return this.servicioListarUsuario.ejecutar();
     }
 }

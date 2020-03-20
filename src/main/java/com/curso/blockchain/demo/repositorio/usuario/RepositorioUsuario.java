@@ -1,6 +1,6 @@
 package com.curso.blockchain.demo.repositorio.usuario;
 
-import com.curso.blockchain.demo.modelo.usuario.Usuario;
+import com.curso.blockchain.demo.modelo.usuario.dto.DtoUsuario;
 
 import java.util.List;
 
@@ -17,5 +17,5 @@ public interface RepositorioUsuario {
      * Listado de usuarios
      * @return id del usuario creado
      * */
-    List<Usuario> listarUsuarios();
+    List<DtoUsuario> listarUsuarios();
 }

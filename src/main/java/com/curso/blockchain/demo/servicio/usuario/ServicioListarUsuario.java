@@ -1,6 +1,6 @@
 package com.curso.blockchain.demo.servicio.usuario;
 
-import com.curso.blockchain.demo.modelo.usuario.Usuario;
+import com.curso.blockchain.demo.modelo.usuario.dto.DtoUsuario;
 import com.curso.blockchain.demo.repositorio.usuario.RepositorioUsuario;
 
 import java.util.List;
@@ -13,7 +13,7 @@ public class ServicioListarUsuario {
         this.repositorioUsuario = repositorioUsuario;
     }
 
-    public List<Usuario> ejecutar() {
+    public List<DtoUsuario> ejecutar() {
         return this.repositorioUsuario.listarUsuarios();
     }
 }

@@ -1,6 +1,6 @@
 package com.curso.blockchain.demo.repositorio.usuario;
 
-import com.curso.blockchain.demo.modelo.usuario.Usuario;
+import com.curso.blockchain.demo.modelo.usuario.dto.DtoUsuario;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
@@ -32,9 +32,7 @@ public class RepositorioUsuarioMySql implements RepositorioUsuario {
     }
 
     @Override
-    public List<Usuario> listarUsuarios() {
+    public List<DtoUsuario> listarUsuarios() {
         return this.namedParameterJdbcTemplate.query(sqlListar, new MapeoUsuario());
     }
-
-
 }

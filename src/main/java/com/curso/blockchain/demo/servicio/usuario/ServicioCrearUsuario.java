@@ -1,5 +1,6 @@
 package com.curso.blockchain.demo.servicio.usuario;
 
+import com.curso.blockchain.demo.modelo.usuario.Usuario;
 import com.curso.blockchain.demo.repositorio.usuario.RepositorioUsuario;
 
 import java.text.DateFormat;
@@ -15,11 +16,11 @@ public class ServicioCrearUsuario {
         this.repositorioUsuario = repositorioUsuario;
     }
 
-    public String ejecutar(String nombreUsuario, String claveUsuario) {
+    public String ejecutar(Usuario usuario) {
         Date date = Calendar.getInstance().getTime();
         DateFormat dateFormat = new SimpleDateFormat("yyyymmddhhmmss");
         String strDate = dateFormat.format(date);
-        int idGenerado = this.repositorioUsuario.crearUsuario(nombreUsuario, claveUsuario);
+        int idGenerado = this.repositorioUsuario.crearUsuario(usuario.getNombre(), usuario.getClave());
         return idGenerado+strDate;
     }
 }
