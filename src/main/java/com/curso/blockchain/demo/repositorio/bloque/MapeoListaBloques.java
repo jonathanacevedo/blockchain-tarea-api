@@ -14,7 +14,8 @@ public class MapeoListaBloques implements RowMapper<Bloque> {
         String hashPrevio = rs.getString("bloque_hashprevio");
         String hashPropio = rs.getString("bloque_hashpropio");
         Long nonce = rs.getLong("bloque_nonce");
-        Header header = new Header(hashPrevio, hashPropio, nonce, "89573929488483");
+        String hashRoot = rs.getString("bloque_hashroot");
+        Header header = new Header(hashPrevio, hashPropio, nonce, hashRoot);
         Long idBloque = rs.getLong("bloque_id");
 
         return new Bloque(idBloque, header, null, null);

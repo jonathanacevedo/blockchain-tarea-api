@@ -17,23 +17,22 @@ public class ServicioMinarBloque {
         this.servicioCrearBloqueGenesis = servicioCrearBloqueGenesis;
     }
 
-    private void validarRedVacia() {
+
+    private String agregarACadena(String llavePublica) {
         int numeroBloques = this.repositorioBloque.obtenerNumeroBloques();
         if(numeroBloques == 0) {
             this.servicioCrearBloqueGenesis.ejecutar();
-        }
+        } else {
+            Bloque bloqueAMinar = this.repositorioBloque.obtenerBloqueAMinar();
+            String hashBloqueGenesis = ServicioRealizarPruebaTrabajo.obtenerHash(bloqueAMinar);
+            bloqueAMinar.getHeader().setHashPropio(hashBloqueGenesis);
 
+            this.repositorioBloque.actualizarBloque(bloqueAMinar);
+        }
+        return MINADO_EXITOSO;
     }
 
     public String ejecutar(String llavePublica) {
-        validarRedVacia();
-
-        Bloque bloqueAMinar = this.repositorioBloque.obtenerBloqueAMinar();
-        String hashBloqueGenesis = ServicioRealizarPruebaTrabajo.obtenerHash(bloqueAMinar);
-        bloqueAMinar.getHeader().setHashPropio(hashBloqueGenesis);
-
-        this.repositorioBloque.actualizarBloque(bloqueAMinar);
-
-        return MINADO_EXITOSO;
+        return agregarACadena(llavePublica);
     }
 }

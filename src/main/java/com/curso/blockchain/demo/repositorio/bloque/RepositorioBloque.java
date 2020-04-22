@@ -10,6 +10,12 @@ public interface RepositorioBloque {
      * Guardar bloque
      * @param bloque
      * */
+    Long guardarBloqueGenesis(Bloque bloque);
+
+    /**
+     * Guardar bloque
+     * @param bloque
+     * */
     Long guardarBloque(Bloque bloque);
 
     /**

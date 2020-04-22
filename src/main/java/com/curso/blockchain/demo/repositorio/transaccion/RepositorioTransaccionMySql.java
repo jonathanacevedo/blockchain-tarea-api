@@ -15,7 +15,7 @@ public class RepositorioTransaccionMySql implements RepositorioTransaccion {
     String sqlCrear = "INSERT INTO transaccion(transaccion_fecha, transaccion_valor, transaccion_origen_usuario, transaccion_destino_usuario, bloque_id) " +
             "VALUES(:fecha, :valor, :origen, :destino, :bloque);";
 
-    String sqlListar = "SELECT * FROM transaccion WHERE bloque_id = 30;";
+    String sqlListar = "SELECT * FROM transaccion WHERE bloque_id = :idBloque;";
 
     public RepositorioTransaccionMySql(NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;

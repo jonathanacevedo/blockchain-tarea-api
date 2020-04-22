@@ -35,7 +35,7 @@ public class ServicioCrearTransaccion {
     }
 
     private Long iniciarBloqueNuevo(Transaccion transaccion) {
-        Long idBloqueNuevo = servicioCrearBloqueNuevo.ejecutar();
+        Long idBloqueNuevo = servicioCrearBloqueNuevo.ejecutar(transaccion);
         this.repositorioTransaccion.crearTransaccion(transaccion, idBloqueNuevo);
         return idBloqueNuevo;
     }

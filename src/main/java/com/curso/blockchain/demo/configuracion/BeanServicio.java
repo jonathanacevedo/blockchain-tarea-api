@@ -3,10 +3,7 @@ package com.curso.blockchain.demo.configuracion;
 import com.curso.blockchain.demo.repositorio.bloque.RepositorioBloque;
 import com.curso.blockchain.demo.repositorio.transaccion.RepositorioTransaccion;
 import com.curso.blockchain.demo.repositorio.usuario.RepositorioUsuario;
-import com.curso.blockchain.demo.servicio.bloque.ServicioCrearBloqueGenesis;
-import com.curso.blockchain.demo.servicio.bloque.ServicioCrearBloqueNuevo;
-import com.curso.blockchain.demo.servicio.bloque.ServicioListarBloques;
-import com.curso.blockchain.demo.servicio.bloque.ServicioMinarBloque;
+import com.curso.blockchain.demo.servicio.bloque.*;
 import com.curso.blockchain.demo.servicio.transaccion.ServicioCrearTransaccion;
 import com.curso.blockchain.demo.servicio.usuario.ServicioCrearUsuario;
 import com.curso.blockchain.demo.servicio.usuario.ServicioListarUsuario;
@@ -27,8 +24,10 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearBloqueGenesis servicioCrearBloqueGenesis(RepositorioBloque repositorioBloque) {
-        return new ServicioCrearBloqueGenesis(repositorioBloque);
+    public ServicioCrearBloqueGenesis servicioCrearBloqueGenesis(RepositorioBloque repositorioBloque,
+                                                                 RepositorioTransaccion repositorioTransaccion,
+                                                                 ServicioObtenerHashRoot servicioObtenerHashRoot) {
+        return new ServicioCrearBloqueGenesis(repositorioBloque, repositorioTransaccion, servicioObtenerHashRoot);
     }
 
     @Bean
@@ -39,8 +38,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearBloqueNuevo servicioCrearBloqueNuevo(RepositorioBloque repositorioBloque) {
-        return new ServicioCrearBloqueNuevo(repositorioBloque);
+    public ServicioCrearBloqueNuevo servicioCrearBloqueNuevo(RepositorioBloque repositorioBloque, ServicioObtenerHashRoot servicioObtenerHashRoot) {
+        return new ServicioCrearBloqueNuevo(repositorioBloque, servicioObtenerHashRoot);
     }
 
     @Bean
@@ -51,6 +50,11 @@ public class BeanServicio {
     @Bean
     public ServicioListarBloques servicioListarBloques(RepositorioBloque repositorioBloque, RepositorioTransaccion repositorioTransaccion) {
         return new ServicioListarBloques(repositorioBloque, repositorioTransaccion);
+    }
+
+    @Bean
+    public ServicioObtenerHashRoot servicioObtenerHashRoot() {
+        return new ServicioObtenerHashRoot();
     }
 
 }
